@@ -26,7 +26,6 @@ public class Handling_Bad_Input {
             x = Integer.parseInt(a);
         } catch (NumberFormatException e) {
             System.out.println("Rate of return must be numeric ");
-            Init();
         }
         if(a.matches("(?=.*[0-9]).*") && x<=100 && x!=0)
             ok=1;
