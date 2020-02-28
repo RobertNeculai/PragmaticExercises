@@ -21,7 +21,13 @@ public class Handling_Bad_Input {
     private static int Validation(String a)
     {
         int ok=0;
-        int x=Integer.parseInt(a);
+        int x= 0;
+        try {
+            x = Integer.parseInt(a);
+        } catch (NumberFormatException e) {
+            System.out.println("Rate of return must be numeric ");
+            Init();
+        }
         if(a.matches("(?=.*[0-9]).*") && x<=100 && x!=0)
             ok=1;
         else if(x!=0)
