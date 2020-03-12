@@ -64,8 +64,5 @@ public class Computing_Statistics {
         System.out.println("The minimum is "+min);
         System.out.println("The maximum is "+max);
         System.out.println("The standard deviation is "+dev);
-
-
-
     }
 }
