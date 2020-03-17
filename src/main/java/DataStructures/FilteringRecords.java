@@ -15,11 +15,13 @@ public class FilteringRecords {
         sortingRecordsByLastName();
 
     }
-    public static void searchInit(){
-        Scanner s=new Scanner(System.in);
+
+    public static void searchInit() {
+        Scanner s = new Scanner(System.in);
         System.out.println("Enter a search string: ");
-        search=s.nextLine();
+        search = s.nextLine();
     }
+
     public static void init() {
         Map<String, Object> row1 = new LinkedHashMap<>();
         Map<String, Object> row2 = new LinkedHashMap<>();
@@ -65,35 +67,37 @@ public class FilteringRecords {
         records.add(row5);
         records.add(row6);
     }
+
     private static void filteringRecords() {
         for (Map<String, Object> sortedMap : records) {
             for (Map.Entry<String, Object> currentMapIterator : sortedMap.entrySet()) {
                 if (currentMapIterator.getKey().equals("lastName")) {
-                    if(currentMapIterator.getValue().toString().contains(search))
+                    if (currentMapIterator.getValue().toString().contains(search))
                         recordsSearched.add(sortedMap);
 
                 }
             }
         }
     }
-                private static void sortingRecordsByLastName () {
 
-                    recordsSearched.sort(Comparator.comparing(recordsSearched -> recordsSearched.get("lastName").toString()));
+    private static void sortingRecordsByLastName() {
 
-                    System.out.println("Name                 | Position             | Separation Date       |");
-                    System.out.println("-------------------------------------------------------------------");
-                    for (Map<String, Object> sortedMap : recordsSearched) {
-                        Iterator<Map.Entry<String, Object>> iterator = sortedMap.entrySet().iterator();
-                        while (iterator.hasNext()) {
-                            Map.Entry<String, Object> currentMapIterator = iterator.next();
-                            if (currentMapIterator.getKey().equals("firstName")) {
-                                currentMapIterator.setValue(currentMapIterator.getValue().toString() + " " +
-                                        iterator.next().getValue().toString());
-                            }
-                            System.out.format("%-20s|\t", currentMapIterator.getValue());
-                        }
-                        System.out.println();
-                    }
+        recordsSearched.sort(Comparator.comparing(recordsSearched -> recordsSearched.get("lastName").toString()));
 
+        System.out.println("Name                 | Position             | Separation Date       |");
+        System.out.println("-------------------------------------------------------------------");
+        for (Map<String, Object> sortedMap : recordsSearched) {
+            Iterator<Map.Entry<String, Object>> iterator = sortedMap.entrySet().iterator();
+            while (iterator.hasNext()) {
+                Map.Entry<String, Object> currentMapIterator = iterator.next();
+                if (currentMapIterator.getKey().equals("firstName")) {
+                    currentMapIterator.setValue(currentMapIterator.getValue().toString() + " " +
+                            iterator.next().getValue().toString());
                 }
+                System.out.format("%-20s|\t", currentMapIterator.getValue());
             }
+            System.out.println();
+        }
+
+    }
+}
