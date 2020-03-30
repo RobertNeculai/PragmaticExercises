@@ -81,9 +81,7 @@ public class FilteringRecords {
     }
 
     private static void sortingRecordsByLastName() {
-
         recordsSearched.sort(Comparator.comparing(recordsSearched -> recordsSearched.get("lastName").toString()));
-
         System.out.println("Name                 | Position             | Separation Date       |");
         System.out.println("-------------------------------------------------------------------");
         for (Map<String, Object> sortedMap : recordsSearched) {
